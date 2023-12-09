@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import BookingForm from '../components/BookingForm';
 import BookingData from '../components/BookingData';
-import { loadData } from '../lib/storage';
+import { loadData, saveData } from '../lib/storage';
 
 const BookingsPage = () => {
     const [bookings, setBookings] = useState([]);
@@ -12,7 +12,9 @@ const BookingsPage = () => {
     }, []);
 
     const handleBookingAdded = (newBooking) => {
-        setBookings(prevBookings => [...prevBookings, newBooking]);
+        const updatedBookings = [...bookings, newBooking];
+        saveData('bookings', updatedBookings);
+        setBookings(updatedBookings);
     };
 
     return (

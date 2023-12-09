@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import ClientForm from '../components/ClientForm';
 import ClientData from '../components/ClientData';
-import { loadData } from '../lib/storage';
+import { loadData, saveData } from '../lib/storage';
 
 const ClientsPage = () => {
     const [clients, setClients] = useState([]);
@@ -12,7 +12,9 @@ const ClientsPage = () => {
     }, []);
 
     const handleClientAdded = (newClient) => {
-        setClients(prevClients => [...prevClients, newClient]);
+        const updatedClients = [...clients, newClient];
+        saveData('clients', updatedClients);
+        setClients(updatedClients);
     };
 
     return (

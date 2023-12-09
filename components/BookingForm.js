@@ -11,16 +11,17 @@ const BookingForm = ({ onBookingAdded }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const bookings = loadData('bookings');
-        saveData('bookings', [...bookings, booking]);
+        const newBooking = { ...booking, id: Date.now().toString() }; // Ensure a unique ID
+        saveData('bookings', [...bookings, newBooking]);
         if (onBookingAdded) {
-            onBookingAdded(booking);
+            onBookingAdded(newBooking);
         }
-        setBooking({ client: '', date: '', details: '' });
+        setBooking({ client: '', date: '', details: '' }); // Reset form fields
     };
 
     return (
         <div className="form-container">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="client">Client:</label>
                     <input type="text" id="client" name="client" value={booking.client} onChange={handleChange} />

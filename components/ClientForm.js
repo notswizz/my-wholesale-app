@@ -11,16 +11,17 @@ const ClientForm = ({ onClientAdded }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const clients = loadData('clients');
-        saveData('clients', [...clients, client]);
+        const newClient = { ...client, id: Date.now().toString() }; // Ensure a unique ID
+        saveData('clients', [...clients, newClient]);
         if (onClientAdded) {
-            onClientAdded(client);
+            onClientAdded(newClient);
         }
-        setClient({ name: '', location: '', email: '' });
+        setClient({ name: '', location: '', email: '' }); // Reset form fields
     };
 
     return (
         <div className="form-container">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" name="name" value={client.name} onChange={handleChange} />

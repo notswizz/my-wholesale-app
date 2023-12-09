@@ -11,16 +11,17 @@ const AgentForm = ({ onAgentAdded }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const agents = loadData('agents');
-        saveData('agents', [...agents, agent]);
+        const newAgent = { ...agent, id: Date.now().toString() }; // Ensure a unique ID
+        saveData('agents', [...agents, newAgent]);
         if (onAgentAdded) {
-            onAgentAdded(agent);
+            onAgentAdded(newAgent);
         }
-        setAgent({ name: '', email: '', phone: '' });
+        setAgent({ name: '', email: '', phone: '' }); // Reset form fields
     };
 
     return (
         <div className="form-container">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name" name="name" value={agent.name} onChange={handleChange} />

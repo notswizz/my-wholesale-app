@@ -6,8 +6,8 @@ const AgentData = ({ agents }) => {
             {agents.map(agent => (
                 <div className="data-item" key={agent.id}>
                     <h3>{agent.name}</h3>
-                    <p>Location: {agent.location}</p>
                     <p>Email: {agent.email}</p>
+                    <p>Phone: {agent.phone}</p>
                 </div>
             ))}
         </div>

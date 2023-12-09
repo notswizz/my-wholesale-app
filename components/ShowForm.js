@@ -11,16 +11,17 @@ const ShowForm = ({ onShowAdded }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const shows = loadData('shows');
-        saveData('shows', [...shows, show]);
+        const newShow = { ...show, id: Date.now().toString() }; // Ensure a unique ID
+        saveData('shows', [...shows, newShow]);
         if (onShowAdded) {
-            onShowAdded(show);
+            onShowAdded(newShow);
         }
-        setShow({ title: '', date: '', venue: '' });
+        setShow({ title: '', date: '', venue: '' }); // Reset form fields
     };
 
     return (
         <div className="form-container">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="title">Title:</label>
                     <input type="text" id="title" name="title" value={show.title} onChange={handleChange} />

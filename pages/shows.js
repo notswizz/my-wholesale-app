@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import ShowForm from '../components/ShowForm';
 import ShowData from '../components/ShowData';
-import { loadData } from '../lib/storage';
+import { loadData, saveData } from '../lib/storage';
 
 const ShowsPage = () => {
     const [shows, setShows] = useState([]);
@@ -12,7 +12,9 @@ const ShowsPage = () => {
     }, []);
 
     const handleShowAdded = (newShow) => {
-        setShows(prevShows => [...prevShows, newShow]);
+        const updatedShows = [...shows, newShow];
+        saveData('shows', updatedShows);
+        setShows(updatedShows);
     };
 
     return (
