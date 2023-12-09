@@ -3,28 +3,29 @@ import Link from 'next/link';
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>Welcome to The Smith Agency Staffing App</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/agents">Agents Management</Link>
-          </li>
-          <li>
-            <Link href="/clients">Clients Management</Link>
-          </li>
-          <li>
-            <Link href="/shows">Shows Management</Link>
-          </li>
-          <li>
-            <Link href="/bookings">Bookings Management</Link>
-          </li>
-          <li>
-            <Link href="/work">Work Compilation</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      <div className="container">
+        <div className="content" style={{ padding: '20px' }}>
+          <nav>
+            <ul className="index-nav">
+              <li>
+                <Link href="/agents">Agents</Link>
+              </li>
+              <li>
+                <Link href="/clients">Clients</Link>
+              </li>
+              <li>
+                <Link href="/shows">Shows</Link>
+              </li>
+              <li>
+                <Link href="/bookings">Bookings</Link>
+              </li>
+              <li>
+                <Link href="/match">Match</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
   );
 };
 

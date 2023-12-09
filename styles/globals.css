@@ -80,7 +80,7 @@ a {
   border-radius: 8px; /* Rounded corners for the form */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   margin: 0 auto; /* Centers the form in the form container */
-  max-width: 500px; /* Maximum width of the form */
+  max-width: 700px; /* Maximum width of the form */
 }
 
 /* Styling for form elements */
@@ -136,6 +136,51 @@ a {
   margin: 0.5rem 0; /* space between cards */
   width: 100%; /* cards take full width of .data */
   box-sizing: border-box; /* include padding and border in the width */
+}
+
+.index-nav {
+  list-style-type: none;
+  padding: 0;
+}
+
+.index-nav li {
+  margin-bottom: 10px;
+}
+
+.index-nav li a {
+  color: #009688; /* Adjust the color to match your app's theme */
+  text-decoration: none;
+}
+
+.index-nav li a:hover {
+  text-decoration: underline;
+}
+
+/* Styling for booking selection buttons */
+.booking-btn {
+  padding: 10px 20px;
+  margin: 5px;
+  border: 1px solid #009688; /* Use your theme color */
+  background-color: #fff;
+  color: #009688;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.booking-btn:hover {
+  background-color: #009688;
+  color: #fff;
+}
+
+/* Ensure the buttons are large enough to be easily clicked */
+.booking-btn {
+  min-width: 100px;
+  min-height: 40px;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 /* Responsive styling */
