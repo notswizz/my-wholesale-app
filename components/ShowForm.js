@@ -1,96 +1,42 @@
-// components/ShowForm.js
 import React, { useState } from 'react';
-import { saveData, loadData } from '../lib/storage';
+import { loadData, saveData } from '../lib/storage';
 
 const ShowForm = ({ onShowAdded }) => {
-  const [show, setShow] = useState({
-    season: '',
-    type: '',
-    location: '',
-    startDate: '',
-    endDate: ''
-  });
+    const [show, setShow] = useState({ title: '', date: '', venue: '' });
 
-  const handleChange = (e) => {
-    setShow({ ...show, [e.target.name]: e.target.value });
-  };
+    const handleChange = (e) => {
+        setShow({ ...show, [e.target.name]: e.target.value });
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newShow = { ...show, name: `${show.season} ${show.location} ${show.type}` };
-    const shows = loadData('shows') || [];
-    saveData('shows', [...shows, newShow]);
-    onShowAdded(newShow);
-    setShow({ season: '', type: '', location: '', startDate: '', endDate: '' }); // Reset form
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const shows = loadData('shows');
+        saveData('shows', [...shows, show]);
+        if (onShowAdded) {
+            onShowAdded(show);
+        }
+        setShow({ title: '', date: '', venue: '' });
+    };
 
-  return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit} className="form">
-        <div>
-          <label htmlFor="season">Season:</label>
-          <select 
-            id="season"
-            name="season" 
-            value={show.season} 
-            onChange={handleChange} 
-            required
-          >
-            <option value="">Select Season</option>
-            <option value="Fall">Fall</option>
-            <option value="Spring">Spring</option>
-            <option value="Winter">Winter</option>
-            <option value="Summer">Summer</option>
-          </select>
+    return (
+        <div className="form-container">
+            <form>
+                <div className="form-group">
+                    <label htmlFor="title">Title:</label>
+                    <input type="text" id="title" name="title" value={show.title} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="date">Date:</label>
+                    <input type="date" id="date" name="date" value={show.date} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="venue">Venue:</label>
+                    <input type="text" id="venue" name="venue" value={show.venue} onChange={handleChange} />
+                </div>
+                <button type="submit" className="button">Add Show</button>
+            </form>
         </div>
-        <div>
-          <label htmlFor="type">Type:</label>
-          <input 
-            id="type"
-            type="text" 
-            name="type" 
-            value={show.type} 
-            onChange={handleChange} 
-            required 
-          />
-        </div>
-        <div>
-          <label htmlFor="location">Location:</label>
-          <input 
-            id="location"
-            type="text" 
-            name="location" 
-            value={show.location} 
-            onChange={handleChange} 
-            required 
-          />
-        </div>
-        <div>
-          <label htmlFor="startDate">Start Date:</label>
-          <input 
-            id="startDate"
-            type="date" 
-            name="startDate" 
-            value={show.startDate} 
-            onChange={handleChange} 
-            required 
-          />
-        </div>
-        <div>
-          <label htmlFor="endDate">End Date:</label>
-          <input 
-            id="endDate"
-            type="date" 
-            name="endDate" 
-            value={show.endDate} 
-            onChange={handleChange} 
-            required 
-          />
-        </div>
-        <button type="submit">Add Show</button>
-      </form>
-    </div>
-  );
+    );
 };
 
 export default ShowForm;
