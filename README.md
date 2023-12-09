@@ -12,6 +12,6 @@ Before you begin, ensure you have the latest version of Node.js and npm installe
 To get started with the application, clone the repository to your local machine and install the dependencies:
 
 ```bash
-git clone https://github.com/your-username/smith-agency-app.git
-cd smith-agency-app
+git clone url
+cd file
 npm install
