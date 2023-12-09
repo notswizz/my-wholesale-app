@@ -17,12 +17,18 @@ const AgentsPage = () => {
         setAgents(updatedAgents);
     };
 
+    const handleDeleteAgent = (agentId) => {
+        const updatedAgents = agents.filter(agent => agent.id !== agentId);
+        saveData('agents', updatedAgents);
+        setAgents(updatedAgents);
+    };
+
     return (
         <>
             <Header />
             <div className="container">
                 <AgentForm onAgentAdded={handleAgentAdded} />
-                <AgentData agents={agents} />
+                <AgentData agents={agents} onDeleteAgent={handleDeleteAgent} />
             </div>
         </>
     );
