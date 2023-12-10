@@ -49,7 +49,7 @@ const BookingForm = ({ onBookingAdded }) => {
         e.preventDefault();
         const newBooking = {
             ...booking,
-            id: `${booking.show}-${booking.client}`, // Generate a unique ID for the booking
+            id: `${booking.client}-${booking.show}`, // Generate a unique ID for the booking
             totalDays: booking.agentCounts.reduce((acc, val) => acc + val, 0),
         };
 

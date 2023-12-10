@@ -8,16 +8,12 @@ const HomePage = () => {
     <>
       <Header />
       <div className="container">
+      <h1>The Smith Agency</h1>
         <div className="logo-container" style={{ textAlign: 'center', margin: '40px 0' }}>
-          <Image src="/tsa.png" alt="TSA Logo" width={150} height={75} />
+          <Image src="/tsa.png" alt="TSA Logo" width={500} height={300} />
         </div>
         <div className="content" style={{ padding: '0 20px', textAlign: 'center' }}>
-          <h1>Welcome to TSA Staffing</h1>
-          <p>
-            At TSA Staffing, we connect talented individuals with the organizations that need them. 
-            Our expertise in the staffing industry ensures we match the right person to the right role. 
-            Explore our site to find out more about our services and how we can help you or your business grow.
-          </p>
+
         </div>
       </div>
     </>
