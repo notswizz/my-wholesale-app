@@ -8,16 +8,20 @@ const ClientsPage = () => {
     const [clients, setClients] = useState([]);
 
     useEffect(() => {
-        setClients(loadData('clients'));
+        // Fetch and set clients data
+        const fetchedClients = loadData('clients');
+        setClients(fetchedClients);
     }, []);
 
     const handleClientAdded = (newClient) => {
+        // Add new client and update storage
         const updatedClients = [...clients, newClient];
         saveData('clients', updatedClients);
         setClients(updatedClients);
     };
 
     const handleDeleteClient = (clientId) => {
+        // Delete client and update storage
         const updatedClients = clients.filter(client => client.id !== clientId);
         saveData('clients', updatedClients);
         setClients(updatedClients);
