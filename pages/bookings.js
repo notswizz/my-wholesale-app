@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import BookingForm from '../components/BookingForm';
 import BookingData from '../components/BookingData';
+import Modal from '../components/BookingModal'; // Import the Modal component
 import { loadData, saveData } from '../lib/storage';
 
 const BookingsPage = () => {
     const [bookings, setBookings] = useState([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [selectedBooking, setSelectedBooking] = useState(null);
 
     useEffect(() => {
         setBookings(loadData('bookings'));
@@ -23,12 +26,18 @@ const BookingsPage = () => {
         setBookings(updatedBookings);
     };
 
+    const handleShowBookingDetails = (booking) => {
+        setSelectedBooking(booking);
+        setModalVisible(true);
+    };
+
     return (
         <>
             <Header />
             <div className="container">
                 <BookingForm onBookingAdded={handleBookingAdded} />
-                <BookingData bookings={bookings} onDeleteBooking={handleDeleteBooking} />
+                <BookingData bookings={bookings} onDeleteBooking={handleDeleteBooking} onShowBookingDetails={handleShowBookingDetails} />
+                {modalVisible && <Modal booking={selectedBooking} onClose={() => setModalVisible(false)} />}
             </div>
         </>
     );
