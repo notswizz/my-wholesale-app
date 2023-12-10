@@ -9,7 +9,8 @@ const BookingData = ({ bookings, onDeleteBooking, onShowBookingDetails }) => {
         <div className="data-container">
             {bookings.map(booking => (
                 <div className="data-item" key={booking.id} onClick={() => onShowBookingDetails(booking)}>
-                    <h3>{booking.id}</h3>
+                    <h3>{booking.client}</h3>
+                    <p>{booking.show}</p>
                     <p>{booking.startDate}</p>
                     <p>{booking.endDate}</p>
                     <p>Total Days: {getTotalDays(booking.agentCounts)}</p>

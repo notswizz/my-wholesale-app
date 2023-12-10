@@ -101,7 +101,7 @@ const BookingForm = ({ onBookingAdded }) => {
                 {booking.startDate && booking.endDate && generateDateRange(new Date(booking.startDate), new Date(booking.endDate)).map((date, index) => (
     <div key={index} className="form-group">
         <label htmlFor={`agentCount-${index}`}>
-            Agents on {date.toISOString().slice(0, 10)}:
+            {date.toISOString().slice(0, 10)}:
         </label>
         <input
             type="number"

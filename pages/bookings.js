@@ -36,8 +36,17 @@ const BookingsPage = () => {
             <Header />
             <div className="container">
                 <BookingForm onBookingAdded={handleBookingAdded} />
-                <BookingData bookings={bookings} onDeleteBooking={handleDeleteBooking} onShowBookingDetails={handleShowBookingDetails} />
-                {modalVisible && <Modal booking={selectedBooking} onClose={() => setModalVisible(false)} />}
+                <BookingData 
+                    bookings={bookings} 
+                    onDeleteBooking={handleDeleteBooking} 
+                    onShowBookingDetails={handleShowBookingDetails} 
+                />
+                {modalVisible && 
+                    <Modal 
+                        booking={selectedBooking} 
+                        onClose={() => setModalVisible(false)} 
+                    />
+                }
             </div>
         </>
     );
