@@ -1,20 +1,22 @@
-/* Basic Reset */
+/* Basic Reset and Global Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Times New Roman', serif; /* Updated font-family */
 }
 
-body, html {
-  height: 100%;
-  background: #eceff1; /* Light grey background */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Full viewport height */
+  overflow: hidden; /* Prevent scrolling on the page itself */
 }
 
 /* Header Styles */
 header {
-  background: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #000000; /* Updated to black background */
+  color: #ffffff; /* Added white text color */
   padding: 1rem 0;
 }
 
@@ -30,24 +32,27 @@ header nav ul li {
 
 header nav ul li a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff; /* Updated link color to white */
   transition: color 0.3s ease;
 }
 
 header nav ul li a:hover {
-  color: #007bff; /* Bootstrap primary color for hover state */
+  color: #d3b1a9; /* Updated hover color to a light pink shade */
 }
 
 /* Main Layout Styles */
 .container {
   display: flex;
-  justify-content: space-between; /* Or 'center' if you want the items to be centered */
+  height: calc(100% - headerHeight - footerHeight); /* Adjust the headerHeight and footerHeight accordingly */
+  justify-content: space-between;
   padding: 20px;
-  gap: 20px; /* Space between form and data components */
+  gap: 20px;
 }
 
 /* Form Styles */
 .form-container {
+  max-height: 500px; /* Set maximum height to ensure it does not cause page scroll */
+  overflow-y: auto; /* Add scroll to the container if content overflows */
   background: #ffffff;
   padding: 2rem;
   border-radius: 8px;
@@ -67,13 +72,13 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="tel"]
+input[type="tel"],
 textarea {
   width: 100%;
   padding: .75rem;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin-bottom: 1rem; /* Add space below each input */
+  margin-bottom: 1rem;
 }
 
 .button {
@@ -83,7 +88,7 @@ textarea {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%; /* Make the button expand the full width of its parent */
+  width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,6 +98,8 @@ textarea {
 
 /* Data Display Styles */
 .data-container {
+  height: 500px; /* Fixed height for the container */
+  overflow-y: auto; /* Enables vertical scrolling */
   background: #ffffff;
   padding: 2rem;
   border-radius: 8px;
@@ -100,9 +107,11 @@ textarea {
   width: 50%;
 }
 
-.data-item {
+.data-item,
+.data-item:last-child {
   border-bottom: 1px solid #ddd;
   padding: .75rem 0;
+  position: relative;
 }
 
 .data-item:last-child {
@@ -119,7 +128,9 @@ textarea {
   font-size: .9rem;
 }
 
-/* Multi-select Dropdown Styles */
+/* Dropdown and Interactive Elements */
+
+/* Styles for select elements */
 .form-group select {
   width: 100%;
   padding: 10px;
@@ -130,9 +141,10 @@ textarea {
   color: #333;
 }
 
+/* Highlight style when the dropdown is focused */
 .form-group select:focus {
   outline: none;
-  border-color: #007bff; /* Highlight color when the dropdown is focused */
+  border-color: #007bff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
@@ -141,18 +153,13 @@ textarea {
   padding: 10px;
 }
 
-/* Adjustments for multiple selection */
+/* Adjustments for multiple selection in dropdown */
 .form-group select[multiple] {
   height: auto; /* Adjust the height as needed */
   background-color: #f8f8f8;
 }
 
-.data-item {
-  position: relative;
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-}
-
+/* Styles for delete buttons in data items */
 .delete-button {
   position: absolute;
   bottom: 10px;
@@ -166,9 +173,11 @@ textarea {
   font-size: 0.8em;
 }
 
+/* Hover effect for delete buttons */
 .delete-button:hover {
   background-color: #eaeaea;
 }
+
 
 /* Footer Styles */
 footer {
@@ -176,10 +185,6 @@ footer {
   color: #ffffff; /* White text color */
   text-align: center;
   padding: 20px 0;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 footer p {
@@ -188,7 +193,7 @@ footer p {
   font-size: 0.9em;
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 600px) {
   footer {
     padding: 15px 0;
@@ -198,4 +203,3 @@ footer p {
     font-size: 0.8em;
   }
 }
-
