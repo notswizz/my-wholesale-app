@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import AgentForm from '../components/AgentForm';
 import AgentData from '../components/AgentData';
+import Footer from '../components/Footer'; //
 import { loadData, saveData } from '../lib/storage';
 
 const AgentsPage = () => {
@@ -30,6 +31,7 @@ const AgentsPage = () => {
                 <AgentForm onAgentAdded={handleAgentAdded} />
                 <AgentData agents={agents} onDeleteAgent={handleDeleteAgent} />
             </div>
+            <Footer/>
         </>
     );
 };

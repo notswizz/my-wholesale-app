@@ -17,12 +17,18 @@ const BookingsPage = () => {
         setBookings(updatedBookings);
     };
 
+    const handleDeleteBooking = (bookingId) => {
+        const updatedBookings = bookings.filter(booking => booking.id !== bookingId);
+        saveData('bookings', updatedBookings);
+        setBookings(updatedBookings);
+    };
+
     return (
         <>
             <Header />
             <div className="container">
                 <BookingForm onBookingAdded={handleBookingAdded} />
-                <BookingData bookings={bookings} />
+                <BookingData bookings={bookings} onDeleteBooking={handleDeleteBooking} />
             </div>
         </>
     );

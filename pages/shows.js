@@ -17,12 +17,18 @@ const ShowsPage = () => {
         setShows(updatedShows);
     };
 
+    const handleDeleteShow = (showId) => {
+        const updatedShows = shows.filter(show => show.id !== showId);
+        saveData('shows', updatedShows);
+        setShows(updatedShows);
+    };
+
     return (
         <>
             <Header />
             <div className="container">
                 <ShowForm onShowAdded={handleShowAdded} />
-                <ShowData shows={shows} />
+                <ShowData shows={shows} onDeleteShow={handleDeleteShow} />
             </div>
         </>
     );

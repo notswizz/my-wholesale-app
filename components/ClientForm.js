@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { loadData, saveData } from '../lib/storage';
 
 const ClientForm = ({ onClientAdded }) => {
-    const [client, setClient] = useState({ name: '', location: '', email: '' });
+    const [client, setClient] = useState({
+        company: '',
+        website: '',
+        contact: '', // Contact name
+        email: '',
+        boothLocation: '', // BLD-FL-#
+    });
 
     const handleChange = (e) => {
         setClient({ ...client, [e.target.name]: e.target.value });
@@ -16,24 +22,33 @@ const ClientForm = ({ onClientAdded }) => {
         if (onClientAdded) {
             onClientAdded(newClient);
         }
-        setClient({ name: '', location: '', email: '' }); // Reset form fields
+        setClient({ company: '', website: '', contact: '', email: '', boothLocation: '', name: '', location: '' }); // Reset form fields
     };
 
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" value={client.name} onChange={handleChange} />
+                    <label htmlFor="company">Company:</label>
+                    <input type="text" id="company" name="company" value={client.company} onChange={handleChange} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="location">Location:</label>
-                    <input type="text" id="location" name="location" value={client.location} onChange={handleChange} />
+                    <label htmlFor="website">Website:</label>
+                    <input type="text" id="website" name="website" value={client.website} onChange={handleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="contact">Contact Name:</label>
+                    <input type="text" id="contact" name="contact" value={client.contact} onChange={handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input type="email" id="email" name="email" value={client.email} onChange={handleChange} />
                 </div>
+                <div className="form-group">
+                    <label htmlFor="boothLocation">Booth Location (BLD-FL-#):</label>
+                    <input type="text" id="boothLocation" name="boothLocation" value={client.boothLocation} onChange={handleChange} />
+                </div>
+                {/* Include other fields as necessary */}
                 <button type="submit" className="button">Add Client</button>
             </form>
         </div>

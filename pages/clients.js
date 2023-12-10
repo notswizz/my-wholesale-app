@@ -17,12 +17,18 @@ const ClientsPage = () => {
         setClients(updatedClients);
     };
 
+    const handleDeleteClient = (clientId) => {
+        const updatedClients = clients.filter(client => client.id !== clientId);
+        saveData('clients', updatedClients);
+        setClients(updatedClients);
+    };
+
     return (
         <>
             <Header />
             <div className="container">
                 <ClientForm onClientAdded={handleClientAdded} />
-                <ClientData clients={clients} />
+                <ClientData clients={clients} onDeleteClient={handleDeleteClient} />
             </div>
         </>
     );
