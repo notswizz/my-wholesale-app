@@ -1,36 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Header from '../components/Header'; // Adjust the path as per your folder structure
-import { loadData } from '../lib/storage'; // Assuming loadData fetches the data
 
 const HomePage = () => {
-  const [totalClients, setTotalClients] = useState(0);
-  const [totalAgents, setTotalAgents] = useState(0);
-  const [totalBookings, setTotalBookings] = useState(0);
 
   useEffect(() => {
-    const clients = loadData('clients'); // Load clients data
-    setTotalClients(clients.length); // Set the total number of clients
-
-    const agents = loadData('agents'); // Load agents data
-    setTotalAgents(agents.length); // Set the total number of agents
-
-    const bookings = loadData('bookings'); // Load bookings data
-    setTotalBookings(bookings.length); // Set the total number of bookings
+    // Load Instagram embed script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = "//www.instagram.com/embed.js";
+    document.body.appendChild(script);
   }, []);
 
   return (
     <>
       <Header />
       <div className="container">
-        <h1>The Smith Agency</h1>
-        <div className="logo-container" style={{ textAlign: 'center', margin: '40px 0' }}>
-          <Image src="/tsa.png" alt="TSA Logo" width={500} height={300} />
+        <div className="left-section">
+          <h2>Welcome to The Smith Agency</h2>
+          <p>The Smith Agency offers specialized, market boutique staffing for wholesale apparel and gift exhibitors during Atlanta, Dallas, and New York Markets. We provide bright and local sales professionals who are trained to understand the wholesale industry. You can count on our reliable, skilled salespeople, for all of your temporary staffing needs. The Smith Agency gives you peace of mind with a worry-free solution that saves you time and money!</p>
         </div>
-        <div className="content" style={{ padding: '0 20px', textAlign: 'center' }}>
-          <h2>Total Clients: {totalClients}</h2> {/* Displaying the total number of clients */}
-          <h2>Total Agents: {totalAgents}</h2> {/* Displaying the total number of agents */}
-          <h2>Total Bookings: {totalBookings}</h2> {/* Displaying the total number of bookings */}
+        <div className="middle-section">
+          <Image src="/tsa.png" alt="TSA Logo" width={200} height={100} />
+        </div>
+        <div className="right-section">
+          {/* Instagram Embed Block */}
+          <blockquote className="instagram-media" data-instgrm-permalink="https://www.instagram.com/the_smithagency/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style={{ background: '#FFF', border: '0', borderRadius: '3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '540px', minWidth: '326px', padding: '0', width: '99.375%', width: '-webkit-calc(100% - 2px)', width: 'calc(100% - 2px)' }}>
+            {/* The rest of the provided Instagram embed code goes here */}
+          </blockquote>
         </div>
       </div>
     </>

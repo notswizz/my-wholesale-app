@@ -13,32 +13,75 @@ html, body {
   overflow: hidden; /* Prevent scrolling on the page itself */
 }
 
-/* Header Styles */
+/* Navbar Styles */
 header {
-  background: #000000; /* Updated to black background */
-  color: #ffffff; /* Added white text color */
-  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensure the logo and nav are on opposite ends */
+  padding: 1rem 1rem; /* Adjust the padding as needed */
+  background: #000; /* Black for sleek look */
+  color: #fff;
 }
 
-header nav ul {
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding-top: 10px;
+}
+
+.header-nav {
   list-style: none;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  margin-left: 5rem; /* Add space between logo and nav items */
+  padding: 0; /* Reset padding */
 }
 
-header nav ul li {
-  padding: 0 1rem;
+.header-nav li {
+  margin-right: 1rem; /* Space between nav items */
 }
 
-header nav ul li a {
+.header-nav li a {
+  color: #fff;
   text-decoration: none;
-  color: #ffffff; /* Updated link color to white */
-  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s, background-color 0.3s;
 }
 
-header nav ul li a:hover {
-  color: #d3b1a9; /* Updated hover color to a light pink shade */
+.header-nav li a:hover {
+  color: #000;
+  background-color: #fff; /* Invert colors on hover */
 }
+
+/* Adjusting the size of the logo image if necessary */
+.logo-container img {
+  height: auto; /* Maintain aspect ratio */
+  width: auto; /* You can set a fixed width if you prefer */
+  max-height: 70px; /* Example fixed max-height */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo-container {
+    margin-bottom: 1rem; /* Space between logo and nav on small screens */
+  }
+
+  .header-nav {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .header-nav li {
+    margin: 0.5rem 0; /* Stack nav items vertically with space in between */
+  }
+}
+
 
 /* Main Layout Styles */
 .container {
@@ -264,5 +307,46 @@ footer p {
 
   footer p {
     font-size: 0.8em;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% - headerHeight - footerHeight); /* Adjust as needed */
+}
+
+.left-section, .middle-section, .right-section {
+  flex: 1; /* Distribute space evenly */
+  padding: 20px;
+}
+
+.left-section {
+  /* Styles for the left section */
+}
+
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-section {
+  /* Styles for the right section, adjust as needed for the iframe */
+  overflow-y: auto; /* Allows scrolling inside the section if necessary */
+}
+
+/* ... rest of the existing CSS ... */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-section, .middle-section, .right-section {
+    flex: none; /* Stack them on top of each other */
+    width: 100%;
+    margin-bottom: 20px;
   }
 }

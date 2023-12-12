@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Main style file
 import 'react-date-range/dist/theme/default.css'; // Theme CSS
-import { loadData } from '../lib/storage';
+import { loadData, saveData } from '../lib/storage';
 
 // Function to create a date without the timezone offset
 function createDateWithoutTimezoneOffset(dateString) {
@@ -25,27 +25,15 @@ const generateDateRange = (start, end) => {
   return dates;
 };
 
-const Modal = ({ booking, onClose }) => {
+const Modal = ({ booking, onClose, onUpdateBooking }) => {
     if (!booking) return null;
-
-    // Validate that the booking has valid start and end dates
-    if (!booking.startDate || !booking.endDate) {
-        console.error('Booking has invalid start or end date', booking);
-        return null; // Or some error handling here
-    }
 
     // Create start and end dates without timezone offset
     const startDate = createDateWithoutTimezoneOffset(booking.startDate);
     const endDate = createDateWithoutTimezoneOffset(booking.endDate);
 
-    // Check if the end date is before the start date
-    if (endDate < startDate) {
-        console.error('End date is before start date', booking);
-        return null; // Or some error handling here
-    }
-
     // Initialize selectedAgents as an array
-    const [selectedAgents, setSelectedAgents] = useState([]);
+    const [selectedAgents, setSelectedAgents] = useState(booking.agentSelection || []);
 
     // Load agents
     const [agents, setAgents] = useState(loadData('agents') || []);
@@ -54,7 +42,6 @@ const Modal = ({ booking, onClose }) => {
         // Populate the selectedAgents state based on booking.agentCounts
         const dateRange = generateDateRange(startDate, endDate);
         const initialSelectedAgents = dateRange.map((date, index) => {
-            // Initialize a new array for each day with the size of the agent count for that day
             return new Array(booking.agentCounts[index] || 0).fill('');
         });
         setSelectedAgents(initialSelectedAgents);
@@ -66,6 +53,37 @@ const Modal = ({ booking, onClose }) => {
       setSelectedAgents(updatedSelection);
     };
 
+    const handleSubmit = () => {
+      // Update the booking with the selected agents
+      const updatedBooking = { ...booking, agentSelection: selectedAgents };
+      const updatedBookings = loadData('bookings').map(b => b.id === booking.id ? updatedBooking : b);
+      saveData('bookings', updatedBookings);
+      onUpdateBooking(updatedBooking); // Call the provided onUpdateBooking function with the updated booking
+      onClose(); // Close the modal after updating
+    };
+
+    const renderAgentDropdown = (dayIndex, agentIndex) => {
+        const selectedAgentId = selectedAgents[dayIndex][agentIndex];
+        const selectedAgent = agents.find(agent => agent.id === selectedAgentId);
+
+        return (
+            <select
+                value={selectedAgentId}
+                onChange={(e) => handleAgentSelection(dayIndex, agentIndex, e.target.value)}
+            >
+                {selectedAgentId ? 
+                    <option value={selectedAgentId}>{selectedAgent?.name || 'Unknown Agent'}</option> : 
+                    <option value="">Select Agent</option>
+                }
+                {agents.map((agent) => (
+                    <option key={agent.id} value={agent.id}>
+                        {agent.name}
+                    </option>
+                ))}
+            </select>
+        );
+    };
+
     const selectionRange = {
         startDate: startDate,
         endDate: endDate,
@@ -75,8 +93,6 @@ const Modal = ({ booking, onClose }) => {
     return (
         <div className="modal">
             <div className="modal-content">
-               
-                <div className="calendar-container">
                 <span className="close" onClick={onClose}>&times;</span>
                 <h3>Booking ID: {booking.id}</h3>
                 <DateRangePicker
@@ -85,33 +101,21 @@ const Modal = ({ booking, onClose }) => {
                     rangeColors={["#3d91ff"]} // Your highlight color
                     showSelectionPreview={true}
                 />
-                 </div>
-                 <div className="table-container">
-                <table>
-                  <tbody>
-                    {selectedAgents.map((agentsForDay, dayIndex) => (
-                      <tr key={dayIndex}>
-                        {agentsForDay.map((_, agentIndex) => (
-                          <td key={agentIndex}>
-                            <select
-                              value={selectedAgents[dayIndex][agentIndex]}
-                              onChange={(e) =>
-                                handleAgentSelection(dayIndex, agentIndex, e.target.value)
-                              }
-                            >
-                              <option value="">Select Agent</option>
-                              {agents.map((agent) => (
-                                <option key={agent.id} value={agent.id}>
-                                  {agent.name}
-                                </option>
-                              ))}
-                            </select>
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                <div className="table-container">
+                    <table>
+                        <tbody>
+                            {selectedAgents.map((agentsForDay, dayIndex) => (
+                                <tr key={dayIndex}>
+                                    {agentsForDay.map((_, agentIndex) => (
+                                        <td key={agentIndex}>
+                                            {renderAgentDropdown(dayIndex, agentIndex)}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <button className="button" onClick={handleSubmit}>Save Selection</button>
                 </div>
             </div>
         </div>

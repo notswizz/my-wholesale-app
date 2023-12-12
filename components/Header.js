@@ -6,6 +6,10 @@ const Header = () => {
   return (
     <header>
       <nav>
+        <div className="logo-container">
+          {/* Insert the TSA logo here */}
+          <Image src="/tsalogo.png" alt="TSA Logo" width={100} height={50} />
+        </div>
         <ul className="header-nav">
           <li>
             <Link href="/agents">Agents</Link>

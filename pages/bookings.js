@@ -20,6 +20,14 @@ const BookingsPage = () => {
         setBookings(updatedBookings);
     };
 
+    const handleUpdateBooking = (updatedBooking) => {
+        const updatedBookings = bookings.map(booking => 
+            booking.id === updatedBooking.id ? updatedBooking : booking
+        );
+        saveData('bookings', updatedBookings);
+        setBookings(updatedBookings);
+    };
+
     const handleDeleteBooking = (bookingId) => {
         const updatedBookings = bookings.filter(booking => booking.id !== bookingId);
         saveData('bookings', updatedBookings);
@@ -44,7 +52,8 @@ const BookingsPage = () => {
                 {modalVisible && 
                     <Modal 
                         booking={selectedBooking} 
-                        onClose={() => setModalVisible(false)} 
+                        onClose={() => setModalVisible(false)}
+                        onUpdateBooking={handleUpdateBooking} 
                     />
                 }
             </div>

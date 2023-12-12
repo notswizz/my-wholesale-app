@@ -8,6 +8,7 @@ const BookingForm = ({ onBookingAdded }) => {
         startDate: '',
         endDate: '',
         agentCounts: [],
+        agentSelection: [],
     });
 
     // Load clients and shows data
