@@ -3,6 +3,7 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // Main style file
 import 'react-date-range/dist/theme/default.css'; // Theme CSS
 import { loadData, saveData } from '../lib/storage';
+import styles from '../styles/BookingModal.module.css';
 
 // Function to create a date without the timezone offset
 function createDateWithoutTimezoneOffset(dateString) {
@@ -91,9 +92,9 @@ const Modal = ({ booking, onClose, onUpdateBooking }) => {
     };
 
     return (
-        <div className="modal">
-            <div className="modal-content">
-                <span className="close" onClick={onClose}>&times;</span>
+        <div className={styles.modal}>
+            <div className={styles.modalContent}>
+                <span className={styles.close} onClick={onClose}>&times;</span>
                 <h3>Booking ID: {booking.id}</h3>
                 <DateRangePicker
                     ranges={[selectionRange]}
@@ -101,7 +102,7 @@ const Modal = ({ booking, onClose, onUpdateBooking }) => {
                     rangeColors={["#3d91ff"]} // Your highlight color
                     showSelectionPreview={true}
                 />
-                <div className="table-container">
+                <div className={styles.tableContainer}>
                     <table>
                         <tbody>
                             {selectedAgents.map((agentsForDay, dayIndex) => (

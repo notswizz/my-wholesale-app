@@ -13,74 +13,7 @@ html, body {
   overflow: hidden; /* Prevent scrolling on the page itself */
 }
 
-/* Navbar Styles */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Ensure the logo and nav are on opposite ends */
-  padding: 1rem 1rem; /* Adjust the padding as needed */
-  background: #000; /* Black for sleek look */
-  color: #fff;
-}
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  height: 20px;
-  padding-top: 10px;
-}
-
-.header-nav {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin-left: 5rem; /* Add space between logo and nav items */
-  padding: 0; /* Reset padding */
-}
-
-.header-nav li {
-  margin-right: 1rem; /* Space between nav items */
-}
-
-.header-nav li a {
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s, background-color 0.3s;
-}
-
-.header-nav li a:hover {
-  color: #000;
-  background-color: #fff; /* Invert colors on hover */
-}
-
-/* Adjusting the size of the logo image if necessary */
-.logo-container img {
-  height: auto; /* Maintain aspect ratio */
-  width: auto; /* You can set a fixed width if you prefer */
-  max-height: 70px; /* Example fixed max-height */
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .logo-container {
-    margin-bottom: 1rem; /* Space between logo and nav on small screens */
-  }
-
-  .header-nav {
-    flex-direction: column;
-    margin-left: 0;
-  }
-
-  .header-nav li {
-    margin: 0.5rem 0; /* Stack nav items vertically with space in between */
-  }
-}
 
 
 /* Main Layout Styles */
@@ -92,198 +25,14 @@ header {
   gap: 20px;
 }
 
-/* Form Styles */
-.form-container {
-  max-height: 500px; /* Set maximum height to ensure it does not cause page scroll */
-  overflow-y: auto; /* Add scroll to the container if content overflows */
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 30%;
-}
 
-.form-group {
-  margin-bottom: 1rem;
-}
 
-label {
-  display: block;
-  margin-bottom: .5rem;
-  color: #333;
-}
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-textarea {
-  width: 100%;
-  padding: .75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
 
-.button {
-  background-color: #17a2b8; /* Bootstrap info color for the button */
-  color: white;
-  padding: .75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
 
-.button:hover {
-  background-color: #138496;
-}
 
-/* Data Display Styles */
-.data-container {
-  height: 500px; /* Fixed height for the container */
-  overflow-y: auto; /* Enables vertical scrolling */
-  background: #ffffff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 65%;
-}
 
-.data-item,
-.data-item:last-child {
-  border-bottom: 1px solid #ddd;
-  padding: .75rem 0;
-  position: relative;
-}
 
-.data-item:last-child {
-  border-bottom: none;
-}
-
-.data-item h3 {
-  color: #333;
-  margin-bottom: .5rem;
-}
-
-.data-item p {
-  color: #666;
-  font-size: .9rem;
-}
-
-/* Dropdown and Interactive Elements */
-
-/* Styles for select elements */
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: white;
-  color: #333;
-}
-
-/* Highlight style when the dropdown is focused */
-.form-group select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-/* Style for options in the dropdown */
-.form-group select option {
-  padding: 10px;
-}
-
-/* Adjustments for multiple selection in dropdown */
-.form-group select[multiple] {
-  height: auto; /* Adjust the height as needed */
-  background-color: #f8f8f8;
-}
-
-/* Styles for delete buttons in data items */
-.delete-button {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: #f8f8f8;
-  color: #0c0101;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 0.8em;
-}
-
-/* Hover effect for delete buttons */
-.delete-button:hover {
-  background-color: #eaeaea;
-}
-
-.modal {
-  display: block; /* Displayed when modal is active */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); /* Dimmed background */
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Adjust as needed */
-  border-radius: 5px; /* Optional: rounded corners */
-  display: flex;
-  flex-direction: row; /* Align children horizontally */
-  justify-content: space-between; /* Space out the children */
-  align-items: flex-start; /* Align children to the start of the cross axis */
-}
-
-.calendar-container {
-  /* Styles for the calendar container */
-  flex: 1; /* Allows it to grow */
-  padding-right: 20px; /* Add some spacing between the calendar and the table */
-}
-
-.details-container {
-  /* Styles for the details and table container */
-  flex: 2; /* Allows it to take twice as much space as the calendar */
-  display: flex;
-  flex-direction: column; /* Stack children vertically */
-}
-
-.table-container {
-  /* Styles for the table container */
-  margin-top: 20px; /* Add some spacing between the ID and the table */
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.rdrDefinedRangesWrapper,
-.rdrDateDisplayWrapper,
-.rdrDateRangeWrapper {
-    display: none;
-}
 
 /* Footer Styles */
 footer {
@@ -336,7 +85,20 @@ footer p {
   overflow-y: auto; /* Allows scrolling inside the section if necessary */
 }
 
-/* ... rest of the existing CSS ... */
+.button {
+  background-color: #17a2b8; /* Bootstrap info color for the button */
+  color: white;
+  padding: .75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  background-color: #138496;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {

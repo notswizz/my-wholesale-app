@@ -1,0 +1,63 @@
+/* Data Display Styles */
+.data-container {
+  max-height: 500px; /* Fixed height for scrolling */
+  overflow-y: auto; /* Scroll on overflow */
+  background: #ffffff;
+  padding: 1rem; /* Reduced padding for more space */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Adjusted to full width of the container */
+  margin: 0 auto; /* Centering the container */
+}
+
+.data-item {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem; /* Increased padding for more space */
+  position: relative;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.data-item:last-child {
+  border-bottom: none;
+}
+
+.data-item:hover {
+  background-color: #f7f7f7; /* Slight background color on hover for interactivity */
+}
+
+.data-item h3 {
+  color: #333;
+  margin-bottom: 0.25rem; /* Reduced bottom margin */
+  font-size: 1.1rem; /* Slightly larger font size */
+}
+
+.data-item p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem; /* Consistent spacing between lines */
+}
+
+.delete-button {
+  position: absolute;
+  top: 50%; /* Align button vertically */
+  right: 1rem; /* Keep some distance from the right edge */
+  transform: translateY(-50%); /* Center the button */
+  background-color: #ff4d4f; /* A reddish background for deletion */
+  color: white;
+  border: none; /* No border */
+  padding: 0.5rem 1rem; /* Larger clickable area */
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.8em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: background-color 0.2s, transform 0.1s; /* Transition for hover and press */
+}
+
+.delete-button:hover {
+  background-color: #ff7875; /* Lighter red on hover */
+  transform: translateY(-50%) scale(1.05); /* Slight grow effect */
+}
+
+.delete-button:active {
+  transform: translateY(-50%) scale(0.95); /* Pressed effect */
+}
