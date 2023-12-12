@@ -16,12 +16,12 @@ const HomePage = () => {
       <Header />
       <div style={{ fontFamily: 'Arial, sans-serif', color: '#333', padding: '20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div style={{ flex: 1, marginRight: '10px' }}>
-            <h2 style={{ color: '#E91E63' }}>Welcome to The Smith Agency</h2>
-            <p>The Smith Agency offers specialized, market boutique staffing for wholesale apparel and gift exhibitors during Atlanta, Dallas, and New York Markets. We provide bright and local sales professionals who are trained to understand the wholesale industry. You can count on our reliable, skilled salespeople, for all of your temporary staffing needs. The Smith Agency gives you peace of mind with a worry-free solution that saves you time and money!</p>
+         
+          <div style={{ flex: 1, marginLeft: '10px', textAlign: 'center' }}>
+            <Image src="/tsalogoai.png" alt="TSA Logo" width={500} height={500} />
           </div>
           <div style={{ flex: 1, marginLeft: '10px', textAlign: 'center' }}>
-            <Image src="/tsalogoai2.png" alt="TSA Logo" width={300} height={300} />
+            <Image src="/tsalogoai2.png" alt="TSA Logo" width={500} height={500} />
           </div>
           <div style={{ flex: 1, marginLeft: '10px' }}>
             {/* Instagram Embed Block */}

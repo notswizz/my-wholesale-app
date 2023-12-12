@@ -95,7 +95,7 @@ const Modal = ({ booking, onClose, onUpdateBooking }) => {
         <div className="modal">
             <div className="modal-content">
                 <span className="close" onClick={onClose}>&times;</span>
-                <h3>Booking ID: {booking.id}</h3>
+                
                 <DateRangePicker
                     ranges={[selectionRange]}
                     moveRangeOnFirstSelection={false}

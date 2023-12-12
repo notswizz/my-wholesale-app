@@ -6,6 +6,7 @@ const ShowData = ({ shows, onDeleteShow }) => {
             {shows.map(show => (
                 <div className="data-item" key={show.id || 'N/A'}>
                     <h3>{show.id}</h3>
+                    <p>                      </p>
                     <p>{show.startDate}</p>
                     <p>{show.endDate}</p>
                     <button onClick={() => onDeleteShow(show.id)} className="delete-button">Delete</button>

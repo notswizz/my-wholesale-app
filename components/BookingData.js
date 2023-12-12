@@ -10,6 +10,7 @@ const BookingData = ({ bookings, onDeleteBooking, onShowBookingDetails }) => {
             {bookings.map(booking => (
                 <div className="data-item" key={booking.id} onClick={() => onShowBookingDetails(booking)}>
                     <h3>{booking.client}</h3>
+                    <p>   </p>
                     <p>{booking.show}</p>
                     <p>{booking.startDate}</p>
                     <p>{booking.endDate}</p>

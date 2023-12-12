@@ -12,6 +12,9 @@ const Header = () => {
           <Image src="/tsalogo.png" alt="TSA Logo" width={100} height={50} />
         </div>
         <ul className="header-nav">
+        <li>
+            <Link href="/">Home</Link>
+          </li>
           <li>
             <Link href="/agents">Agents</Link>
           </li>
