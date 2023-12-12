@@ -1,15 +1,26 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Header from '../components/Header'; // Adjust the path as per your folder structure
+import Router from 'next/router';
 
 const HomePage = () => {
   useEffect(() => {
+    // Authentication check
+    fetch('/api/auth')
+      .then(response => {
+        if (response.status !== 200) {
+          // Redirect to a different page or show an error
+          Router.push('/login'); // Redirect to login page or show an error message
+        }
+      });
+
     // Load Instagram embed script
     const script = document.createElement('script');
     script.async = true;
     script.src = "//www.instagram.com/embed.js";
     document.body.appendChild(script);
   }, []);
+
 
   return (
     <>
