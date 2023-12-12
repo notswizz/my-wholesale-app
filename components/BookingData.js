@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from '../styles/Data.module.css';
 
 const BookingData = ({ bookings, onDeleteBooking, onShowBookingDetails }) => {
     const getTotalDays = (agentCounts) => {
@@ -7,9 +6,9 @@ const BookingData = ({ bookings, onDeleteBooking, onShowBookingDetails }) => {
     };
 
     return (
-        <div className={styles.dataContainer}>
+        <div className="data-container">
             {bookings.map(booking => (
-                <div className={styles.dataItem} key={booking.id} onClick={() => onShowBookingDetails(booking)}>
+                <div className="data-item" key={booking.id} onClick={() => onShowBookingDetails(booking)}>
                     <h3>{booking.client}</h3>
                     <p>{booking.show}</p>
                     <p>{booking.startDate}</p>

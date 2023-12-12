@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from '../styles/Data.module.css';
 
 const ShowData = ({ shows, onDeleteShow }) => {
     return (
-        <div className={styles.dataContainer}>
+        <div className="data-container">
             {shows.map(show => (
-                <div className={styles.dataItem} key={show.id || 'N/A'}>
+                <div className="data-item" key={show.id || 'N/A'}>
                     <h3>{show.id}</h3>
                     <p>{show.startDate}</p>
                     <p>{show.endDate}</p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles/Data.module.css';
+
 
 const AgentData = ({ agents, onDeleteAgent }) => {
     const formatLocation = (location) => {
@@ -7,15 +7,15 @@ const AgentData = ({ agents, onDeleteAgent }) => {
     };
 
     return (
-        <div className={styles.dataContainer}>
+        <div className="data-container">
             {agents.map(agent => (
-                <div className={styles.dataItem} key={agent.id}>
+                <div className="data-item" key={agent.id}>
                     <h3>{agent.name}</h3>
                     <p>Email: {agent.email}</p>
                     <p>Phone: {agent.phone}</p>
                     <p>Location: {formatLocation(agent.location)}</p>
                     <p>Instagram: <a href={`https://www.instagram.com/${agent.instagram}/`} target="_blank" rel="noopener noreferrer">{agent.instagram}</a></p>
-                    <button onClick={() => onDeleteAgent(agent.id)} className={styles.deleteButton}>Delete</button>
+                    <button onClick={() => onDeleteAgent(agent.id)} className="delete-button">Delete</button>
                 </div>
             ))}
         </div>

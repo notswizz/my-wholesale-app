@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from '../styles/Data.module.css';
 
 const ClientData = ({ clients, onDeleteClient }) => {
     return (
-        <div className={styles.dataContainer}>
+        <div className="data-container">
             {clients.map(client => (
-                <div className={styles.dataItem} key={client.id}>
+                <div className="data-item" key={client.id}>
                     <h3>{client.company}</h3>
                     {/* Check and format the website URL */}
                     <p>Website: 
